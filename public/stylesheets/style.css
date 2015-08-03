@@ -12,3 +12,5 @@ footer a             { margin: 0px 10px 0px 0px;}
 nav span             { margin: 0px 10px 0px 0px;}
 
 #author_img			 { margin:10px 10px 10px 10px; width:93px; height:135px;}
+
+#ErrorMsgs           { color: #f61; font-size: smaler}
