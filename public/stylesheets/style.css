@@ -15,3 +15,4 @@ td					 { text-align: left; }
 #author_img			 { margin:10px 10px 10px 10px; width:93px; height:135px;}
 
 #ErrorMsgs           { color: #f61; font-size: smaler}
+.right 				 {float: right;}
