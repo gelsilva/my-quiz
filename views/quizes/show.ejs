@@ -2,6 +2,16 @@
   <%= quiz.pregunta + " [" + quiz.tema + "]" %> <p>
   <input type="text" name="respuesta" value="Respuesta"/>
   <input type="submit" value="Enviar">
-  <br />
-  <a href="/quizes">Volver</a>
 </form>
+
+</br>
+<p><a href="/quizes">Volver</a></p>
+
+</br>
+</br>
+<p><a href="/quizes/<%= quiz.id %>/comments/new"><button>Nuevo comentario</button></a></p>
+
+<p><strong>Comentarios:</strong></p>
+<%for(index in quiz.Comments){%>
+	<p>- <%=quiz.Comments[index].texto%></p>
+<%}%>
