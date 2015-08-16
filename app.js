@@ -29,12 +29,34 @@ app.use(session());
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Helpers dinamicos:
 app.use(function(req, res, next) {
+    
+    var tiempoAct;
 
-  // Hacer visible req.session en las vistas
-  res.locals.session = req.session;
-  next();
+    // guardar path en session.redir para después del login
+    if (!req.path.match(/\/login|\/logout/)) {
+        req.session.redir = req.path;
+    }
+
+    // Expirar sesión autenticada tras 2 minutos
+    if (req.session.user) 
+    {
+        tiempoAct = new Date().getTime();
+
+        if ( (tiempoAct - req.session.tiempoExp) > 2 * 60 * 1000 ) 
+        {
+            delete req.session.user;
+            delete req.session.tiempoExp;
+        } 
+        else 
+        {
+            req.session.tiempoExp = tiempoAct;
+        }
+    };
+        
+    // hacer visible req.session en las vistas
+    res.locals.session = req.session;
+    next();
 });
 
 app.use('/', routes);

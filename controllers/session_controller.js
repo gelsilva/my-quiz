@@ -57,8 +57,10 @@ exports.create = function(req, res) {
         // Esto es lo que uso para saber si he hecho login o no.
         req.session.user = {id:user.id, username:user.username};
 
-        // Vuelvo al url indicado en redir
-        res.redirect("/");
+        req.session.tiempoExp = new Date().getTime();
+
+        // Vuelta a path anterior a login
++       res.redirect(req.session.redir.toString());
     });
 }; 
 
@@ -70,5 +72,8 @@ exports.create = function(req, res) {
 exports.destroy = function(req, res) {
 
     delete req.session.user;
-    res.redirect("/login");     
+    delete req.session.tiempoExp;
+
+     // Vuelta a path anterior a login
+    res.redirect(req.session.redir.toString());   
 };
