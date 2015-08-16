@@ -10,6 +10,7 @@ header, nav, section { background: #eee; text-align: center;}
 footer               { background: #eee; text-align: center;}
 footer a             { margin: 0px 10px 0px 0px;}
 nav span             { margin: 0px 10px 0px 0px;}
+td					 { text-align: left; }
 
 #author_img			 { margin:10px 10px 10px 10px; width:93px; height:135px;}
 
